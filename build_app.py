@@ -80,7 +80,8 @@ def main():
                 f.write("2. RIGHT-CLICK (or Control-click) the app icon and select 'Open'.\n")
                 f.write("3. You will see a warning. Click the new 'Open' button that appears.\n\n")
                 f.write("Alternatively, open Terminal and run:\n")
-                f.write(f"xattr -cr /path/to/the/app\n")
+                f.write(f"xattr -cr /path/to/PDF\\ Image\\ Remover.app\n")
+                f.write("(Tip: You can type 'xattr -cr ' and just drag and drop the app into the terminal!)\n")
             
             # Zip the folder using ditto
             zip_cmd = [
