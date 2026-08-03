@@ -65,6 +65,7 @@ jobs:
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v2
       with:
+        generate_release_notes: true
         body: |
           ### 🚀 Installation & Troubleshooting
           
@@ -80,6 +81,8 @@ jobs:
           Windows Defender SmartScreen flags unsigned executable files. 
           * If you downloaded the **Standard (.zip)** version and see a blue warning screen, click **More Info -> Run Anyway**.
           * Alternatively, try the **Portable (.exe)** version, which often bypasses this warning automatically!
+          
+          ---
         files: |
           release_assets/PDF-Image-Remover-Portable/PDF Image Remover Portable.exe
           release_assets/PDF-Image-Remover-Standard/PDF Image Remover-Windows-Standard.zip

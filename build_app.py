@@ -70,7 +70,6 @@ def main():
             os.makedirs(release_dir, exist_ok=True)
             
             # Move the .app into the release folder
-            import shutil
             shutil.move(f"dist/{app_name}.app", f"{release_dir}/{app_name}.app")
             
             # Add Instructions.txt for macOS
