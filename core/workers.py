@@ -1,6 +1,4 @@
 import fitz
-import tempfile
-import os
 from typing import List, Dict, Any
 
 from PySide6.QtCore import QThread, Signal
@@ -57,33 +55,21 @@ class SaveWorker(QThread):
             pix = fitz.Pixmap(fitz.csGRAY, fitz.IRect(0, 0, 1, 1), False)
             pix.clear_with(255)
 
-            # Save the dummy pixel to a secure temporary file
-            tmp = tempfile.NamedTemporaryFile(suffix=".png", delete=False)
-            tmp_path = tmp.name
-            
-            try:
-                pix.save(tmp_path)
-                tmp.close()
+            # Replace the target images with the dummy pixel across all relevant pages
+            for candidate in self.selected_candidates:
+                for page_num in candidate["pages"]:
+                    page = doc[page_num - 1]
+                    page.replace_image(
+                        candidate["xref"],
+                        pixmap=pix
+                    )
 
-                # Replace the target images with the dummy pixel across all relevant pages
-                for candidate in self.selected_candidates:
-                    for page_num in candidate["pages"]:
-                        page = doc[page_num - 1]
-                        page.replace_image(
-                            candidate["xref"],
-                            filename=tmp_path
-                        )
-
-                # Save the document with proper garbage collection and compression
-                doc.save(
-                    self.output,
-                    garbage=self.garbage_level,
-                    deflate=self.use_deflate
-                )
-            finally:
-                # Securely remove the temporary file regardless of success or failure
-                if os.path.exists(tmp_path):
-                    os.remove(tmp_path)
+            # Save the document with proper garbage collection and compression
+            doc.save(
+                self.output,
+                garbage=self.garbage_level,
+                deflate=self.use_deflate
+            )
 
             doc.close()
             self.save_completed.emit()
