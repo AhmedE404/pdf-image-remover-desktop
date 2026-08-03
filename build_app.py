@@ -1,6 +1,14 @@
 import sys
 import subprocess
 import platform
+import shutil
+import os
+
+def run_pyinstaller(args: list):
+    """Helper to run PyInstaller with specific arguments."""
+    cmd = [sys.executable, "-m", "PyInstaller", "--noconfirm", "--windowed"] + args + ["main.py"]
+    print(f"Running PyInstaller: {' '.join(cmd)}")
+    subprocess.check_call(cmd)
 
 def main():
     """
@@ -15,37 +23,39 @@ def main():
     subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
     subprocess.check_call([sys.executable, "-m", "pip", "install", "pyinstaller"])
 
-    # Step 2: Prepare PyInstaller command
+    # Step 2: Build Application
     app_name = "PDF Image Remover"
-    
-    cmd = [
-        sys.executable, "-m", "PyInstaller",
-        "--noconfirm", # Overwrite output directory without asking
-        "--windowed",
-        "--name", app_name,
-    ]
 
     if os_name == "Windows":
-        print("Applying Windows specific flags (--onefile)...")
-        cmd.append("--onefile")
+        # 1. Build Standard Directory Version
+        print("\nBuilding Windows Directory version (Standard)...")
+        run_pyinstaller(["--name", app_name])
+        
+        print("Zipping Directory version...")
+        shutil.make_archive(f"dist/{app_name}-Windows-Standard", 'zip', "dist", app_name)
+        
+        # 2. Build Portable OneFile Version
+        print("\nBuilding Windows OneFile version (Portable)...")
+        run_pyinstaller(["--onefile", "--name", f"{app_name} Portable"])
 
-    # macOS specific requirements for PyMuPDF
-    if os_name == "Darwin":
-        print("Applying macOS specific flags...")
-        # macOS users expect a .app bundle, which is created by --windowed.
-        # --onefile is deprecated and breaks .app bundles on Mac.
-        cmd.extend([
-            "--hidden-import=fitz",
-            "--hidden-import=pymupdf",
-            "--collect-all", "fitz",
-            "--collect-all", "pymupdf",
-        ])
-    
-    cmd.append("main.py")
-
-    # Step 3: Run Build
-    print(f"Running PyInstaller: {' '.join(cmd)}")
-    subprocess.check_call(cmd)
+    else:
+        # Build for macOS / Linux
+        args = ["--name", app_name]
+        
+        if os_name == "Darwin":
+            print("\nApplying macOS specific flags...")
+            args.extend([
+                "--hidden-import=fitz",
+                "--hidden-import=pymupdf",
+                "--collect-all", "fitz",
+                "--collect-all", "pymupdf",
+            ])
+            
+        run_pyinstaller(args)
+        
+        if os_name == "Darwin":
+            print("Zipping macOS .app bundle...")
+            shutil.make_archive(f"dist/{app_name}-macOS", 'zip', "dist", f"{app_name}.app")
 
     print(f"\nBuild complete! You can find your application in the 'dist' folder.")
 
