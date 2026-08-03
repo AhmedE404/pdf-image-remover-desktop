@@ -54,8 +54,12 @@ def main():
         run_pyinstaller(args)
         
         if os_name == "Darwin":
-            print("Zipping macOS .app bundle...")
-            shutil.make_archive(f"dist/{app_name}-macOS", 'zip', "dist", f"{app_name}.app")
+            print("Zipping macOS .app bundle (using native ditto to preserve symlinks)...")
+            zip_cmd = [
+                "ditto", "-c", "-k", "--sequesterRsrc", "--keepParent",
+                f"dist/{app_name}.app", f"dist/{app_name}-macOS.zip"
+            ]
+            subprocess.check_call(zip_cmd)
 
     print(f"\nBuild complete! You can find your application in the 'dist' folder.")
 
