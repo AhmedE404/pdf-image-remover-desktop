@@ -1,5 +1,7 @@
 # PDF Image Remover
 
+[![Download Latest Release](https://img.shields.io/github/v/release/AhmedE404/pdf-image-remover-desktop?label=Download%20Latest%20Version&style=for-the-badge&color=success)](https://github.com/AhmedE404/pdf-image-remover-desktop/releases/latest)
+
 A modern, fast, and user-friendly desktop application for removing repeated images (such as headers, footers, logos, or watermarks) from PDF files.
 
 Built with:
@@ -43,6 +45,34 @@ python main.py
 
 ---
 
+## Installation & Troubleshooting
+
+Because this is a free, open-source application, the compiled binaries are not signed with paid Developer Certificates ($99/yr for Apple, $300/yr for Windows EV). Therefore, your operating system might show a security warning. Here is how to safely bypass them:
+
+### macOS ("App cannot be opened" or "Unverified Developer")
+When you download the `.zip` release and extract the `.app`, macOS's Gatekeeper will block it from running by default. 
+
+**Solution 1 (Settings):**
+1. Try to open the app normally (it will be blocked).
+2. Go to your Mac's **System Settings > Privacy & Security**.
+3. Scroll down to the Security section. You will see a message saying "PDF Image Remover was blocked".
+4. Click **Open Anyway** and confirm. The app will open and work forever.
+
+**Solution 2 (Terminal - Recommended):**
+To remove the Apple Quarantine flag completely, open your Terminal and run:
+```bash
+xattr -cr /path/to/PDF\ Image\ Remover.app
+```
+*(Tip: You can type `xattr -cr ` and just drag and drop the app into the terminal!)*
+
+### Windows ("Windows protected your PC")
+Because the application is not digitally signed with a paid certificate, Windows SmartScreen may block it.
+
+* If you downloaded the **Standard (.zip)** version and see a blue warning screen, click **More Info -> Run Anyway**.
+* Alternatively, try the **Portable (.exe)** version, which often bypasses this warning automatically!
+
+---
+
 ## Project Architecture (Clean Code)
 
 The project follows a clean, enterprise-grade modular architecture:
@@ -78,4 +108,4 @@ This script will automatically detect whether you are on Windows or macOS, insta
 
 ## License
 
-This project is released under the MIT License.
+This project is released under the [MIT License](LICENSE).

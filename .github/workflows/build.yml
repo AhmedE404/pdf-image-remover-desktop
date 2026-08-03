@@ -65,6 +65,21 @@ jobs:
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v2
       with:
+        body: |
+          ### 🚀 Installation & Troubleshooting
+          
+          Because this is a free open-source app, your OS might show a security warning. Here is how to safely bypass it:
+          
+          #### 🍏 macOS ("App cannot be opened" or "Unverified Developer")
+          1. **DO NOT double-click the app.**
+          2. **Right-click (or Control-click)** the app icon and select **Open**.
+          3. Click the new **Open** button in the warning dialog.
+          *(Alternatively, run `xattr -cr "/path/to/PDF Image Remover.app"` in Terminal)*
+          
+          #### 🪟 Windows ("Windows protected your PC")
+          Windows Defender SmartScreen flags unsigned executable files. 
+          * If you downloaded the **Standard (.zip)** version and see a blue warning screen, click **More Info -> Run Anyway**.
+          * Alternatively, try the **Portable (.exe)** version, which often bypasses this warning automatically!
         files: |
           release_assets/PDF-Image-Remover-Portable/PDF Image Remover Portable.exe
           release_assets/PDF-Image-Remover-Standard/PDF Image Remover-Windows-Standard.zip
