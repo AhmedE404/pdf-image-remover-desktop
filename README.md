@@ -14,9 +14,13 @@ Built with **Python 3.10+**, **PyMuPDF**, and **PySide6**.
 
 ## Download
 
-You don't need to install Python to use this app! You can download the ready-to-use executable for **Windows** or **macOS**:
+You don't need to install Python to use this app! All versions below are portable and require no installation (just download and run):
 
-👉 **[Go to the Releases Page to download the latest version](https://github.com/AhmedE404/pdf-image-remover-desktop/releases/latest)** 👈
+* 🪟 **[Download for Windows (Portable .exe)](https://github.com/AhmedE404/pdf-image-remover-desktop/releases/latest/download/PDF.Image.Remover.Portable.exe)** - *Single file version.*
+* 🪟 **[Download for Windows (Standard .zip)](https://github.com/AhmedE404/pdf-image-remover-desktop/releases/latest/download/PDF.Image.Remover-Windows-Standard.zip)**
+* 🍏 **[Download for macOS (.zip)](https://github.com/AhmedE404/pdf-image-remover-desktop/releases/latest/download/PDF.Image.Remover-macOS.zip)**
+
+*(Or [click here to browse the Releases page](https://github.com/AhmedE404/pdf-image-remover-desktop/releases/latest) for changelogs and older versions).*
 
 *(If you are looking for installation instructions or how to bypass security warnings, please see the [Installation & Troubleshooting](#installation--troubleshooting) section below).*
 
