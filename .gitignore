@@ -1,6 +1,9 @@
-/.DS_Store
-/PDF Image Remover.spec
-/__pycache__
-/build
-/dist
-/venv
+.DS_Store
+*.spec
+__pycache__/
+*.pyc
+*.pyo
+build/
+dist/
+venv/
+.venv/
