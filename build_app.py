@@ -8,10 +8,10 @@ def main():
     Handles specific flags required for macOS and Windows.
     """
     os_name = platform.system()
-    print(f"🚀 Starting build process for {os_name}...")
+    print(f"Starting build process for {os_name}...")
 
     # Step 1: Install dependencies
-    print("📦 Installing requirements...")
+    print("Installing requirements...")
     subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
     subprocess.check_call([sys.executable, "-m", "pip", "install", "pyinstaller"])
 
@@ -26,12 +26,12 @@ def main():
     ]
 
     if os_name == "Windows":
-        print("🪟 Applying Windows specific flags (--onefile)...")
+        print("Applying Windows specific flags (--onefile)...")
         cmd.append("--onefile")
 
     # macOS specific requirements for PyMuPDF
     if os_name == "Darwin":
-        print("🍎 Applying macOS specific flags...")
+        print("Applying macOS specific flags...")
         # macOS users expect a .app bundle, which is created by --windowed.
         # --onefile is deprecated and breaks .app bundles on Mac.
         cmd.extend([
@@ -44,10 +44,10 @@ def main():
     cmd.append("main.py")
 
     # Step 3: Run Build
-    print(f"⚙️ Running PyInstaller: {' '.join(cmd)}")
+    print(f"Running PyInstaller: {' '.join(cmd)}")
     subprocess.check_call(cmd)
 
-    print(f"\n✅ Build complete! You can find your application in the 'dist' folder.")
+    print(f"\nBuild complete! You can find your application in the 'dist' folder.")
 
 if __name__ == "__main__":
     main()
