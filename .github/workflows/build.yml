@@ -61,6 +61,7 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         path: release_assets
+        merge-multiple: true
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v2
@@ -81,8 +82,7 @@ jobs:
           Because the app is unsigned, Windows Defender SmartScreen will block it. 
           * Whether you downloaded the **Portable (.exe)** or the **Standard (.zip)**, click **More Info -> Run Anyway** when the blue screen appears.
         files: |
-          release_assets/PDF-Image-Remover-Portable/PDF Image Remover Portable.exe
-          release_assets/PDF-Image-Remover-Standard/PDF Image Remover-Windows-Standard.zip
-          release_assets/PDF-Image-Remover-macOS/PDF Image Remover-macOS.zip
+          release_assets/*.exe
+          release_assets/*.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
