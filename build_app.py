@@ -38,8 +38,7 @@ def main():
             f.write("To run it:\n")
             f.write("1. Double-click the app.\n")
             f.write("2. If a blue screen appears saying 'Windows protected your PC', click 'More info'.\n")
-            f.write("3. Click 'Run anyway'.\n\n")
-            f.write("Tip: If you want to avoid this warning entirely, try downloading the Portable (.exe) version from the Releases page instead!\n")
+            f.write("3. Click 'Run anyway'.\n")
         
         print("Zipping Directory version...")
         shutil.make_archive(f"dist/{app_name}-Windows-Standard", 'zip', "dist", app_name)

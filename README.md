@@ -68,8 +68,7 @@ xattr -cr /path/to/PDF\ Image\ Remover.app
 ### Windows ("Windows protected your PC")
 Because the application is not digitally signed with a paid certificate, Windows SmartScreen may block it.
 
-* If you downloaded the **Standard (.zip)** version and see a blue warning screen, click **More Info -> Run Anyway**.
-* Alternatively, try the **Portable (.exe)** version, which often bypasses this warning automatically!
+* Whether you downloaded the **Portable (.exe)** or the **Standard (.zip)** version, click **More Info -> Run Anyway** when the blue screen appears.
 
 ---
 

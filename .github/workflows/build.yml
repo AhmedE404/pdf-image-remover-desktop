@@ -78,11 +78,8 @@ jobs:
           *(Alternatively, run `xattr -cr "/path/to/PDF Image Remover.app"` in Terminal)*
           
           #### 🪟 Windows ("Windows protected your PC")
-          Windows Defender SmartScreen flags unsigned executable files. 
-          * If you downloaded the **Standard (.zip)** version and see a blue warning screen, click **More Info -> Run Anyway**.
-          * Alternatively, try the **Portable (.exe)** version, which often bypasses this warning automatically!
-          
-          ---
+          Because the app is unsigned, Windows Defender SmartScreen will block it. 
+          * Whether you downloaded the **Portable (.exe)** or the **Standard (.zip)**, click **More Info -> Run Anyway** when the blue screen appears.
         files: |
           release_assets/PDF-Image-Remover-Portable/PDF Image Remover Portable.exe
           release_assets/PDF-Image-Remover-Standard/PDF Image Remover-Windows-Standard.zip
