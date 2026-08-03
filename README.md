@@ -1,13 +1,24 @@
+<div align="center">
+
 # PDF Image Remover
 
 [![Download Latest Release](https://img.shields.io/github/v/release/AhmedE404/pdf-image-remover-desktop?label=Download%20Latest%20Version&style=for-the-badge&color=success)](https://github.com/AhmedE404/pdf-image-remover-desktop/releases/latest)
 
 A modern, fast, and user-friendly desktop application for removing repeated images (such as headers, footers, logos, or watermarks) from PDF files.
 
-Built with:
-* **Python 3.10+**
-* **PyMuPDF** (for fast PDF manipulation)
-* **PySide6** (for a modern GUI)
+Built with **Python 3.10+**, **PyMuPDF**, and **PySide6**.
+
+</div>
+
+---
+
+## Download
+
+You don't need to install Python to use this app! You can download the ready-to-use executable for **Windows** or **macOS**:
+
+👉 **[Go to the Releases Page to download the latest version](https://github.com/AhmedE404/pdf-image-remover-desktop/releases/latest)** 👈
+
+*(If you are looking for installation instructions or how to bypass security warnings, please see the [Installation & Troubleshooting](#installation--troubleshooting) section below).*
 
 ---
 
@@ -37,7 +48,7 @@ pip install -r requirements.txt
 
 ---
 
-## Run
+## Running from Source
 
 ```bash
 python main.py
@@ -72,9 +83,9 @@ Because the application is not digitally signed with a paid certificate, Windows
 
 ---
 
-## Project Architecture (Clean Code)
+## Project Structure
 
-The project follows a clean, enterprise-grade modular architecture:
+The project is organized into the following modules:
 
 ```
 .
